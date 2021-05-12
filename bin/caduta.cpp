@@ -1,42 +1,29 @@
-/**
- * @file caduta.cpp
- *
- * @version 01.01 2020-11-3
- *
- * @brief https://training.olinfo.it/#/task/oii_caduta/statement
- *
- * @ingroup caduta
- * (Note: this needs exactly one @defgroup somewhere)
- *
- * @author Castellani Davide
- *
- * Contact: contacts@castellanidavide.it
- *
- */
+typedef enum {
+	OK,
+	RISOLTO,
+	IMPOSSIBILE
+} stato_t;
 
-// Includes
-#include <bits/stdc++.h>
-using namespace std;
+typedef struct {
+	int domino1;
+	int domino2;
+} coppia_t;
 
-// Variabiles
-int N;
+stato_t correggi(int N, int altezze[], coppia_t* scambio) {
+	// esempio di implementazione, cancella queste righe e implementa qui la tua soluzione
 
-// Main code
-int main()
-{
-  // Cncomment the following lines if you want to read/write from files
-  // freopen("input.txt", "r", stdin);
-  // freopen("output.txt", "w", stdout);
+	if (N % 3 == 0) {
+		// usa la sintassi scambio->campo invece di scambio.campo
+		scambio->domino1 = 0;
+		scambio->domino2 = 3;
 
-  // Input
-  cin >> N;
-
-  // Code
-  // ...
-
-  // Output
-  cout << N << endl;
-
-  // End
-  return 0;
+		// valorizzando il parametro scambio, stiamo dicendo di aver risolto
+		return RISOLTO;
+	} else if (N % 3 == 1) {
+		// stiamo dicendo che non era necessario risolvere
+		return OK;
+	} else {
+		// stiamo dicendo che non era possibile risolvere
+		return IMPOSSIBILE;
+	}
 }
